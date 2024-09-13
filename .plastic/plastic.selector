@@ -1,0 +1,4 @@
+repository "ConnectFourAR@kwmndz@cloud"
+  path "/"
+    br "/main"
+    co "/main"
