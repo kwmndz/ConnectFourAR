@@ -475,18 +475,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connect4BoardPrefab: {fileID: 7180020450595135016, guid: 7119961d5041b584b8250b7879bf59c5,
     type: 3}
-  placementIndicator: {fileID: 919132149155446097, guid: e760ff44a7adc4cf98ae34ae984d15a4,
+  placementIndicator: {fileID: 919132149155446097, guid: 63e02ddb08ce42da868504e1333d48ae,
     type: 3}
   holdDuration: 2
   circlePrefab: {fileID: 5264535290616600407, guid: bebb1b62038e15c4992d2c5f24bb4bf4,
     type: 3}
   yOffset: 6
-  glowCircleScale: 0.4
-  circleSpacing: 7
-  startOffset: 0.45
+  glowCircleScale: 0.02
+  circleSpacing: 140
+  startOffset: 0.045
   glowCircles: []
-  boardScale: 1
-  indicatorScale: 1
+  boardScale: 0.05
+  indicatorScale: 0.05
   indicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   boardColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &1678037536
@@ -514,8 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 1585201990951412, guid: a6b7ca1d53c75490595d1f0d5f43be38,
-    type: 3}
+  m_PlanePrefab: {fileID: 0}
   m_DetectionMode: -1
 --- !u!114 &1678037538
 MonoBehaviour:
@@ -593,7 +592,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9849d57b276e0499bbdf5a86baaffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DEPTH: 4
+  DEPTH: 6
+  DEPTH_LIMIT: 12
+  depth_step: 0
+  DEPTH_TURN_INCREMENT: 3
 --- !u!114 &1678037543
 MonoBehaviour:
   m_ObjectHideFlags: 0

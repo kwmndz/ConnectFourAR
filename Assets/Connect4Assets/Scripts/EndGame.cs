@@ -25,8 +25,8 @@ public class EndGame : MonoBehaviour
 
         // Calculate positions relative to the board
         Vector3 boardPosition = board.transform.position;
-        Vector3 textPosition = boardPosition + new Vector3(0.75f, 0.5f, 1f); // Adjust as needed
-        Vector3 panelPosition = boardPosition + new Vector3(0, 0.5f, -1.0f); // Adjust as needed
+        Vector3 textPosition = boardPosition; //+ new Vector3(0.75f, 0.5f, 1f); // Adjust as needed
+        Vector3 panelPosition = boardPosition; //+ new Vector3(0, 0.5f, -1.0f); // Adjust as needed
 
         if (winner)
         {

@@ -8,6 +8,10 @@ public class Connect4Bot : MonoBehaviour
     public int DEPTH = 8;
 
     public int DEPTH_LIMIT = 15; // Limit the depth of the search (increments 1 every turn)
+
+    public int depth_step = 0; // Amount of turns before depth increase
+
+    public int DEPTH_TURN_INCREMENT = 3; // Amount of turns before depth increase
     private BoardState boardState;
 
     private char p1;
@@ -274,9 +278,11 @@ public class Connect4Bot : MonoBehaviour
                 }
             }
         }
-        if (DEPTH <= DEPTH_LIMIT){
+        if (DEPTH <= DEPTH_LIMIT && depth_step == DEPTH_TURN_INCREMENT){
             DEPTH += 1; // Increase the depth of the search as game progresses
+            depth_step = -1;
         }
+        depth_step += 1;
         return bestMove;
     }
 }

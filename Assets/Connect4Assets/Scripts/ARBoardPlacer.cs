@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class ARBoardPlacer : MonoBehaviour
 {
@@ -281,11 +282,12 @@ public class ARBoardPlacer : MonoBehaviour
             }
         }
         if (boardState.currentPlayer == boardState.p1)
-        {
+        { 
             int bestMove = connect4Bot.DropPieceAI(boardState.currentPlayer);
-            boardState.DropPiece(bestMove, boardState.currentPlayer);
-            
-            StartCoroutine(DelayMethod(0.05f, bestMove));
+
+            // Call the method on the main thread
+            boardState.DropPiece(bestMove, boardState.currentPlayer);  
+            StartCoroutine(DelayMethod(1f, bestMove));
             if (boardState.CheckWin(false)) {
                 endGame.EndGameWithWinner(false);
                 return;
