@@ -6,16 +6,21 @@ public class Connect4Bot : MonoBehaviour
 {
 
     public int DEPTH = 8;
+
+    public int DEPTH_LIMIT = 15; // Limit the depth of the search (increments 1 every turn)
     private BoardState boardState;
 
     private char p1;
     private char p2;
+
+    private bool firstTurn;
 
     void Start()
     {
         boardState = GetComponent<BoardState>();
         p1 = boardState.p1;
         p2 = boardState.p2;
+        firstTurn = true;
     }
     // Return the board as a string for caching
     private string BoardToString(char[,] board)
@@ -169,6 +174,9 @@ public class Connect4Bot : MonoBehaviour
 
     // Dictionary to store the cache
     private Dictionary<string, int> cache = new Dictionary<string, int>();
+
+    // Minimax function
+    // Returns the score of the board based off a certain depth
     int Minimax(char[,] board, int depth, int alpha, int beta, bool maximizingPlayer)
     {
         char AI = boardState.currentPlayer;
@@ -243,7 +251,13 @@ public class Connect4Bot : MonoBehaviour
         int bestScore = int.MinValue; // Negative infinity
         int?[,] moves = boardState.AllCurrentPossibleMoves();
         char[,] board = boardState.board;
-        int score = 0;
+        int score;
+        if (firstTurn && player == p1)
+        {
+            firstTurn = false;
+            return 3; // Drop in the middle for the first turn
+            // Middle is theoretically the best move for the first turn
+        }
         for (int i = 0; i < 7; i++)
         {
             if (moves[i, 0] != null)
@@ -260,7 +274,7 @@ public class Connect4Bot : MonoBehaviour
                 }
             }
         }
-        if (DEPTH <= 8){
+        if (DEPTH <= DEPTH_LIMIT){
             DEPTH += 1; // Increase the depth of the search as game progresses
         }
         return bestMove;
